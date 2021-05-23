@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+ 
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.study.member.MemberMapper">
+
+<update id="updatePW" parameterType="Map">
+	update member2
+	set passwd = #{passwd}		
+		where id = #{id}
+</update>
+
+<update id="updateFile" parameterType="Map">
+	update member2
+	set fname = #{fname}		
+		where id = #{id}
+</update>
+
+<select id="total" parameterType="Map" resultType="int">
+	select count(*) from member2
+	<where>
+		<choose>
+			<when test="col=='mname'">
+			mname like '%'||#{word}||'%'
+			</when>
+			<when test="col=='id'">
+			id like '%'||#{word}||'%'
+			</when>
+			<when test="col=='email'">
+			email like '%'||#{word}||'%'
+			</when>
+		</choose>
+	</where>
+</select>
+<select id="list" parameterType="Map" resultType="com.study.member.MemberVO">
+	SELECT id, mname, tel, email, zipcode, address1, address2,
+	fname,  r
+	from(
+		SELECT id, mname, tel, email, zipcode, address1, address2,
+		fname, rownum r
+		from(
+			SELECT id, mname, tel, email, zipcode, address1, 
+			address2, fname
+			FROM member2
+			<where>
+				<choose>
+					<when test="col=='mname'">
+					mname like '%'||#{word}||'%'
+					</when>
+					<when test="col=='id'">
+					id like '%'||#{word}||'%'
+					</when>
+					<when test="col=='email'">
+					email like '%'||#{word}||'%'
+					</when>
+				</choose>
+			</where>
+			ORDER BY mdate DESC 
+		)
+	<![CDATA[
+	)where r >= #{sno} and r <= #{eno}
+	]]>
+</select>
+<update id="update" parameterType="com.study.member.MemberVO">
+	update member2
+	set tel = #{tel},
+		email = #{email},
+		zipcode = #{zipcode},
+		address1 = #{address1},
+		address2 = #{address2},
+		job = #{job}
+		where id = #{id}
+</update>
+<select id="read" parameterType="String" resultType="com.study.member.MemberVO">
+	select * from member2
+	where id = #{id}
+</select>
+<select id="getGrade" parameterType="String" resultType="String">
+	select grade from member2
+	where id = #{id}
+</select>
+<select id="loginCheck" parameterType="Map" resultType="int">
+	select count(*) from member2
+	where id = #{id}
+	and passwd = #{passwd}
+</select>
+<select id = "duplicatedId" parameterType="String" resultType="int">
+	select count(*) from member2
+	where id = #{id}
+</select>
+<select id = "duplicatedEmail" parameterType="String" resultType="int">
+	select count(*) from member2
+	where email = #{email}
+</select>
+<insert id="create" parameterType="com.study.member.MemberVO">
+	INSERT INTO member2(id, passwd, mname, tel, email, zipcode,  
+	address1,address2, job, mdate, fname, grade) 
+	VALUES(#{id}, #{passwd}, #{mname}, #{tel}, #{email}, #{zipcode}, 
+	#{address1}, #{address2}, #{job}, sysdate, #{fname}, 'H' )
+</insert>
+</mapper>
