@@ -25,8 +25,8 @@ contact 010-5663-6055 / poohksy123@gmail.com
   <br><br>
   
    ii. 실행영상<br>
-   
-
+  [![Video portfolio](https://user-images.githubusercontent.com/69621976/120132532-76e0c880-c205-11eb-81a2-bcb60e5ea256.png)](https://www.youtube.com/watch?v=FCtEG9eb1To)
+ 
  ## Front-end 소개
  >src
  >>main
@@ -49,3 +49,12 @@ contact 010-5663-6055 / poohksy123@gmail.com
  >>webapp<br>
  >>>web-INF<br>
  >>>>views<br>
+
+## Back-end 소개
+
+i. DataBase 테이블 설계<br>
+![image](https://user-images.githubusercontent.com/69621976/120148156-bcf85500-c222-11eb-9315-97b79448a75a.png)
+
+## 제 소개
+
+![image](https://user-images.githubusercontent.com/69621976/120148311-fc26a600-c222-11eb-8b9b-435ee55f2bcf.png)
