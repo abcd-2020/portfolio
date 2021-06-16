@@ -27,7 +27,7 @@ contact 010-5663-6055 / poohksy123@gmail.com
   ### 카테고리 추천 알고리즘을 이용, 기온에 따른 의상 추천하는 주제로 개발하고 있습니다. 
   <br><br>
   
-   ii. 실행영상<br>
+   ii. <strong>실행영상 클릭해주세요!!!<br></strong>
   [![Video portfolio](https://user-images.githubusercontent.com/69621976/120132532-76e0c880-c205-11eb-81a2-bcb60e5ea256.png)](https://www.youtube.com/watch?v=FCtEG9eb1To)
  
  ## Front-end 소개
